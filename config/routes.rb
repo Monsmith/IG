@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :posts
 
 
-  root  'posts#index'
+  root  'users#new'
   resources :users
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
