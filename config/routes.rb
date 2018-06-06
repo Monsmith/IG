@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   get 'sessions/new'
   get 'posts/new'
   get 'users/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :posts
+  resources :posts do
+   resources :comments
+  end
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  root  'users#new'
-  resources :users
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
+  root 'posts#index'
+  get ':name', to: 'profiles#show', as: :profile
+  get ':name/edit', to: 'profiles#edit', as: :edit_profile
+  patch ':name/edit', to: 'profiles#update', as: :update_profile
 
 end
