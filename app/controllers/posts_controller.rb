@@ -36,6 +36,14 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
   private
   def set_post
     @post = Post.find(params[:id])

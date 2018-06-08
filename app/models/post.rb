@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  acts_as_votable
+
   validates :user_id, presence: true
 
   has_attached_file :image, styles: { medium: "640x"}, default_url: "/images/:style/missing.png"

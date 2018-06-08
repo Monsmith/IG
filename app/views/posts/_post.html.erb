@@ -30,6 +30,7 @@
     </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
+        <%= link_to 'like', like_post_path(post.id), remote: true, id: "like_#{post.id}", class: "btn btn-info btn-lg"%>
       </div>
       <div class="comment-form col-sm-11">
         <%= post.user.name %>
